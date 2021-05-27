@@ -29,6 +29,9 @@ class ShoppingViewModel(
     }
 
     fun getAllShoppingLists() = repository.getAllShoppingLists()
+    fun getActiveShoppingLists() = repository.getActiveShoppingLists()
+    fun getArchiveShoppingLists() = repository.getArchiveShoppingLists()
+
     fun getAllShoppingItems() = repository.getAllShoppingItems()
 
 }

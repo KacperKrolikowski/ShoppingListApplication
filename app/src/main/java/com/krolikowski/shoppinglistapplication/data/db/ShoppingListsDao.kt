@@ -15,4 +15,10 @@ interface ShoppingListsDao {
 
     @Query("SELECT * FROM shopping_lists")
     fun getAllShoppingLists(): LiveData<List<ShoppingList>>
+
+    @Query("SELECT * FROM shopping_lists WHERE list_archive = 'FALSE'")
+    fun getActiveShoppingLists(): LiveData<List<ShoppingList>>
+
+    @Query("SELECT * FROM shopping_lists WHERE list_archive = 'TRUE'")
+    fun getArchiveShoppingLists(): LiveData<List<ShoppingList>>
 }

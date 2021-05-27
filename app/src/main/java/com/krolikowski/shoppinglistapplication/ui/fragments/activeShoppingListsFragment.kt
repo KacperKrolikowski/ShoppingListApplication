@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.krolikowski.shoppinglistapplication.R
 import com.krolikowski.shoppinglistapplication.adapters.ShoppingListsAdapter
 import com.krolikowski.shoppinglistapplication.data.db.ShoppingDatabase
+import com.krolikowski.shoppinglistapplication.data.db.entities.ShoppingList
 import com.krolikowski.shoppinglistapplication.data.repositories.ShoppingRepository
 import com.krolikowski.shoppinglistapplication.ui.ShoppingActivity
 import com.krolikowski.shoppinglistapplication.ui.viewmodels.ShoppingViewModel
@@ -38,6 +39,13 @@ class activeShoppingListsFragment: Fragment(R.layout.fragment_active_shopping_li
             adapter.lists = it
             adapter.notifyDataSetChanged()
         })
+
+        val list1 = ShoppingList("Lista1", true)
+        val list2 = ShoppingList("Lista2", false)
+
+        fabAddNewShoppingList.setOnClickListener {
+            viewModel.upsert(list1)
+        }
 
     }
 

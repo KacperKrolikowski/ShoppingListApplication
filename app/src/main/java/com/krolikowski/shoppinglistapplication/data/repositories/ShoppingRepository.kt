@@ -11,6 +11,8 @@ class ShoppingRepository (
     suspend fun upsert(list: ShoppingList) = db.getShoppingListsDao().upsert(list)
     suspend fun delete(list: ShoppingList) = db.getShoppingListsDao().delete(list)
     fun getAllShoppingLists() = db.getShoppingListsDao().getAllShoppingLists()
+    fun getActiveShoppingLists() = db.getShoppingListsDao().getActiveShoppingLists()
+    fun getArchiveShoppingLists() = db.getShoppingListsDao().getArchiveShoppingLists()
 
     suspend fun upsertItem(item: ShoppingItem) = db.getShoppingItemsDao().upsertItem(item)
     suspend fun deleteItem(item: ShoppingItem) = db.getShoppingItemsDao().deleteItem(item)
