@@ -8,9 +8,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".ShoppingApplication"
         android:theme="@style/Theme.ShoppingListApplication">
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.ShoppingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -3,7 +3,6 @@ package com.krolikowski.shoppinglistapplication.data.db
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.krolikowski.shoppinglistapplication.data.db.entities.ShoppingItem
-import com.krolikowski.shoppinglistapplication.data.db.entities.ShoppingList
 
 @Dao
 interface ShoppingItemsDao {

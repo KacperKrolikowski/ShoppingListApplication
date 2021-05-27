@@ -3,7 +3,6 @@ package com.krolikowski.shoppinglistapplication.data.db.entities
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.util.*
 
 
 @Entity(tableName = "shopping_lists")
