@@ -14,8 +14,6 @@ data class ShoppingItem(
     var amount: Int,
     @ColumnInfo(name = "item_details")
     var details: String,
-    @ColumnInfo(name = "item_archived")
-    var archived: Boolean
 ){
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null
