@@ -10,7 +10,7 @@ data class ShoppingList(
     @ColumnInfo(name = "list_name")
     var name: String,
     @ColumnInfo(name = "list_archive")
-    var archive: Boolean
+    var archive: Int
 ){
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null

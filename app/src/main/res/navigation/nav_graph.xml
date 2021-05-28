@@ -1,23 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/activeShoppingListsFragment">
 
     <fragment
         android:id="@+id/activeShoppingListsFragment"
-        android:name="com.krolikowski.shoppinglistapplication.ui.fragments.activeShoppingListsFragment"
+        android:name="com.krolikowski.shoppinglistapplication.ui.fragments.ActiveShoppingListsFragment"
         android:label="activeShoppingListsFragment" >
         <action
             android:id="@+id/action_activeShoppingListsFragment_to_selectedListFragment"
-            app:destination="@id/selectedListFragment" />
+            app:destination="@id/selectedListFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+
     </fragment>
     <fragment
         android:id="@+id/archivedShoppingListsFragment"
-        android:name="com.krolikowski.shoppinglistapplication.ui.fragments.archivedShoppingListsFragment"
+        android:name="com.krolikowski.shoppinglistapplication.ui.fragments.ArchivedShoppingListsFragment"
         android:label="archivedShoppingListsFragment" />
     <fragment
         android:id="@+id/selectedListFragment"
-        android:name="com.krolikowski.shoppinglistapplication.ui.fragments.selectedListFragment"
-        android:label="selectedListFragment" />
+        android:name="com.krolikowski.shoppinglistapplication.ui.fragments.SelectedListFragment"
+        android:label="selectedListFragment">
+        <argument
+            android:name="listId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/newListFragment"
+        android:name="com.krolikowski.shoppinglistapplication.ui.fragments.NewListFragment"
+        android:label="NewListFragment" />
 </navigation>
