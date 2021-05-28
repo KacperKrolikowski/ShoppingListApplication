@@ -3,9 +3,12 @@ package com.krolikowski.shoppinglistapplication.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.krolikowski.shoppinglistapplication.R
 import com.krolikowski.shoppinglistapplication.data.db.entities.ShoppingList
+import com.krolikowski.shoppinglistapplication.ui.fragments.ActiveShoppingListsFragment
+import com.krolikowski.shoppinglistapplication.ui.fragments.ActiveShoppingListsFragmentDirections
 import com.krolikowski.shoppinglistapplication.ui.viewmodels.ShoppingViewModel
 import kotlinx.android.synthetic.main.shopping_list_item.view.*
 

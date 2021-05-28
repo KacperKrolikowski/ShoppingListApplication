@@ -12,8 +12,8 @@ data class ShoppingItem(
     var name: String,
     @ColumnInfo(name = "item_amount")
     var amount: Int,
-    @ColumnInfo(name = "item_details")
-    var details: String,
+    @ColumnInfo(name = "item_state")
+    var state: Boolean,
 ){
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null

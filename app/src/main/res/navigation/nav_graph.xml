@@ -14,6 +14,9 @@
             app:destination="@id/selectedListFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"/>
+        <action
+            android:id="@+id/action_activeShoppingListsFragment_to_newListFragment"
+            app:destination="@id/newListFragment" />
 
     </fragment>
     <fragment
@@ -23,11 +26,7 @@
     <fragment
         android:id="@+id/selectedListFragment"
         android:name="com.krolikowski.shoppinglistapplication.ui.fragments.SelectedListFragment"
-        android:label="selectedListFragment">
-        <argument
-            android:name="listId"
-            app:argType="integer" />
-    </fragment>
+        android:label="selectedListFragment"/>
     <fragment
         android:id="@+id/newListFragment"
         android:name="com.krolikowski.shoppinglistapplication.ui.fragments.NewListFragment"

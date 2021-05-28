@@ -39,21 +39,9 @@ class ActiveShoppingListsFragment: Fragment(R.layout.fragment_active_shopping_li
             adapter.notifyDataSetChanged()
         })
 
-        val list1 = ShoppingList("Lista1", 0)
-        val list2 = ShoppingList("Lista2", 1)
-
         fabAddNewShoppingList.setOnClickListener {
-            val newList = ShoppingList("New list", 0)
-            viewModel.upsert(newList)
-            val listId = newList.id
-            val action = listId?.let { it1 ->
-                ActiveShoppingListsFragmentDirections.actionActiveShoppingListsFragmentToSelectedListFragment(
-                    it1
-                )
-            }
-            if (action != null) {
-                findNavController().navigate(action)
-            }
+            val action = ActiveShoppingListsFragmentDirections.actionActiveShoppingListsFragmentToNewListFragment()
+            findNavController().navigate(action)
         }
 
     }
