@@ -11,6 +11,7 @@ import com.krolikowski.shoppinglistapplication.ui.fragments.ActiveShoppingListsF
 import com.krolikowski.shoppinglistapplication.ui.fragments.ActiveShoppingListsFragmentDirections
 import com.krolikowski.shoppinglistapplication.ui.viewmodels.ShoppingViewModel
 import kotlinx.android.synthetic.main.shopping_list_item.view.*
+import kotlinx.android.synthetic.main.shopping_single_item.view.*
 
 class ShoppingListsAdapter(
     var lists: List<ShoppingList>,

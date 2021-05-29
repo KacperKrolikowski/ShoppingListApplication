@@ -16,4 +16,7 @@ interface ShoppingItemsDao {
     @Query("SELECT * FROM shopping_items")
     fun getAllShoppingItems(): LiveData<List<ShoppingItem>>
 
+    @Query("SELECT * FROM shopping_items WHERE item_list_id = :currentListId")
+    fun getItemsFromCurrentList(currentListId: Int): LiveData<List<ShoppingItem>>
+
 }

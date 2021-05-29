@@ -49,7 +49,7 @@
         app:srcCompat="@drawable/ic_round_remove_24" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/itemAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"

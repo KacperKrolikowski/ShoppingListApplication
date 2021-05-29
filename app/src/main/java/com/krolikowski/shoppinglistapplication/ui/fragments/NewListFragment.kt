@@ -2,10 +2,15 @@ package com.krolikowski.shoppinglistapplication.ui.fragments
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.krolikowski.shoppinglistapplication.R
+import com.krolikowski.shoppinglistapplication.adapters.ShoppingItemsAdapter
 import com.krolikowski.shoppinglistapplication.data.db.ShoppingDatabase
+import com.krolikowski.shoppinglistapplication.data.db.entities.ShoppingItem
+import com.krolikowski.shoppinglistapplication.data.db.entities.ShoppingList
 import com.krolikowski.shoppinglistapplication.data.repositories.ShoppingRepository
 import com.krolikowski.shoppinglistapplication.ui.viewmodels.ShoppingViewModel
 import com.krolikowski.shoppinglistapplication.ui.viewmodels.ShoppingViewModelFactory
@@ -24,13 +29,36 @@ class NewListFragment: Fragment(R.layout.fragment_new_list) {
 
         val viewModel = ViewModelProviders.of(this, factory).get(ShoppingViewModel::class.java)
 
-        amountPicker.minValue = 1
-        amountPicker.maxValue = 100
-        amountPicker.wrapSelectorWheel = true
+        amountPicker.apply {
+            minValue = 1
+            maxValue = 100
+            wrapSelectorWheel = true
+        }
 
-        amountPicker.setOnValueChangedListener { picker, oldVal, newVal ->
+        val NewList = ShoppingList("New",0)
+        viewModel.upsert(NewList)
+
+        list_name_editText.doOnTextChanged { text, start, before, count ->
+            NewList.name = text.toString()
+            viewModel.upsert(NewList)
+        }
+
+        addItemButton.setOnClickListener {
+            val name = itemNameEditText.text.toString()
+            val amount = amountPicker.value
+            val NewItem = ShoppingItem(0, name, amount, 0)
 
         }
+
+        val adapter = ShoppingItemsAdapter(listOf(), viewModel)
+        itemsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        itemsRecyclerView.adapter = adapter
+
+        viewModel.getAllShoppingItems().observe(viewLifecycleOwner, {
+            adapter.items = it
+            adapter.notifyDataSetChanged()
+        })
+
 
     }
 
