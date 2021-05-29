@@ -2,9 +2,11 @@ package com.krolikowski.shoppinglistapplication.ui.fragments
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.krolikowski.shoppinglistapplication.R
 import com.krolikowski.shoppinglistapplication.adapters.ShoppingItemsAdapter
@@ -19,6 +21,8 @@ import kotlinx.android.synthetic.main.fragment_new_list.*
 class NewListFragment: Fragment(R.layout.fragment_new_list) {
 
     lateinit var viewModel: ShoppingViewModel
+    private val args: NewListFragmentArgs by navArgs()
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -35,10 +39,9 @@ class NewListFragment: Fragment(R.layout.fragment_new_list) {
             wrapSelectorWheel = true
         }
 
-        val NewList = ShoppingList("New",0)
-        viewModel.upsert(NewList)
+        val currentList = viewModel.getCurrentList(args.listId)
 
-        list_name_TextView.text = ""
+        //list_name_TextView.text = currentList.name.toString()
 
         addItemButton.setOnClickListener {
             val name = itemNameEditText.text.toString()

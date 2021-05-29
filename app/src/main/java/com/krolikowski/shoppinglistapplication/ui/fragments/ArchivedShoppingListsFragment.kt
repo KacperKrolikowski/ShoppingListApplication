@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.krolikowski.shoppinglistapplication.R
 import com.krolikowski.shoppinglistapplication.adapters.ShoppingListsAdapter
@@ -16,7 +17,7 @@ import com.krolikowski.shoppinglistapplication.ui.viewmodels.ShoppingViewModelFa
 import kotlinx.android.synthetic.main.fragment_active_shopping_lists.*
 import kotlinx.android.synthetic.main.fragmeny_archived_shopping_lists.*
 
-class ArchivedShoppingListsFragment : Fragment(R.layout.fragmeny_archived_shopping_lists) {
+class ArchivedShoppingListsFragment : Fragment(R.layout.fragmeny_archived_shopping_lists), ShoppingListsAdapter.OnItemClickListener {
 
     lateinit var viewModel: ShoppingViewModel
     lateinit var listsAdapter: ShoppingListsAdapter
@@ -30,7 +31,7 @@ class ArchivedShoppingListsFragment : Fragment(R.layout.fragmeny_archived_shoppi
 
         val viewModel = ViewModelProviders.of(this, factory).get(ShoppingViewModel::class.java)
 
-        val adapter = ShoppingListsAdapter(listOf(), viewModel)
+        val adapter = ShoppingListsAdapter(listOf(), viewModel, this)
         shoppingArchivedListsRecycleView.layoutManager = LinearLayoutManager(requireContext())
         shoppingArchivedListsRecycleView.adapter = adapter
 
@@ -38,5 +39,8 @@ class ArchivedShoppingListsFragment : Fragment(R.layout.fragmeny_archived_shoppi
             adapter.lists = it
             adapter.notifyDataSetChanged()
         })
+    }
+    override fun onItemClick(position: Int) {
+
     }
 }

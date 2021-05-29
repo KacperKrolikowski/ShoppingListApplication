@@ -11,10 +11,27 @@ import kotlinx.android.synthetic.main.shopping_single_item.view.*
 
 class ShoppingListsAdapter(
     var lists: List<ShoppingList>,
-    private val viewModel: ShoppingViewModel
+    private val viewModel: ShoppingViewModel,
+    private val listener: OnItemClickListener
 ) : RecyclerView.Adapter<ShoppingListsAdapter.ShoppingListsViewHolder>() {
 
-    inner class ShoppingListsViewHolder (itemView: View): RecyclerView.ViewHolder(itemView)
+    inner class ShoppingListsViewHolder (itemView: View): RecyclerView.ViewHolder(itemView), View.OnClickListener{
+
+        init {
+            itemView.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View?) {
+            val position = adapterPosition
+            if(position != RecyclerView.NO_POSITION){
+                listener.onItemClick(position)
+            }
+        }
+    }
+
+    interface OnItemClickListener{
+        fun onItemClick(position: Int)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShoppingListsViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(

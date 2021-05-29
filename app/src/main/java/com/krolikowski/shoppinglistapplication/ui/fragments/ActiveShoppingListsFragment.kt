@@ -18,7 +18,7 @@ import com.krolikowski.shoppinglistapplication.ui.viewmodels.ShoppingViewModel
 import com.krolikowski.shoppinglistapplication.ui.viewmodels.ShoppingViewModelFactory
 import kotlinx.android.synthetic.main.fragment_active_shopping_lists.*
 
-class ActiveShoppingListsFragment: Fragment(R.layout.fragment_active_shopping_lists) {
+class ActiveShoppingListsFragment: Fragment(R.layout.fragment_active_shopping_lists), ShoppingListsAdapter.OnItemClickListener {
 
     lateinit var viewModel: ShoppingViewModel
     lateinit var listsAdapter: ShoppingListsAdapter
@@ -32,7 +32,7 @@ class ActiveShoppingListsFragment: Fragment(R.layout.fragment_active_shopping_li
 
         val viewModel = ViewModelProviders.of(this, factory).get(ShoppingViewModel::class.java)
 
-        val adapter = ShoppingListsAdapter(listOf(), viewModel)
+        val adapter = ShoppingListsAdapter(listOf(), viewModel, this)
         shoppingListsRecycleView.layoutManager = LinearLayoutManager(requireContext())
         shoppingListsRecycleView.adapter = adapter
 
@@ -52,6 +52,12 @@ class ActiveShoppingListsFragment: Fragment(R.layout.fragment_active_shopping_li
         }
 
     }
+
+    override fun onItemClick(position: Int) {
+        val action = ActiveShoppingListsFragmentDirections.actionActiveShoppingListsFragmentToNewListFragment(position)
+        findNavController().navigate(action)
+    }
+
 
 
 }
