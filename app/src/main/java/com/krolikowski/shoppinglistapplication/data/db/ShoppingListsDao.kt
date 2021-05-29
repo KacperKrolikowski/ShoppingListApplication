@@ -22,6 +22,5 @@ interface ShoppingListsDao {
     @Query("SELECT * FROM shopping_lists WHERE list_archive = 1")
     fun getArchiveShoppingLists(): LiveData<List<ShoppingList>>
 
-    @Query("SELECT * FROM shopping_lists WHERE id = :currentListId")
-    suspend fun getCurrentList(currentListId: Int): ShoppingList
+
 }

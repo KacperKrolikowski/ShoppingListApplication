@@ -45,8 +45,8 @@ class NewListFragment: Fragment(R.layout.fragment_new_list) {
             val name = itemNameEditText.text.toString()
             val amount = amountPicker.value
             val currentListId = args.currentList.id
-            val NewItem = ShoppingItem(currentListId!!, name, amount, 0)
-            viewModel.upsertItem(NewItem)
+            val newItem = ShoppingItem(currentListId!!, name, amount, 0)
+            viewModel.upsertItem(newItem)
             itemNameEditText.setText("")
 
         }

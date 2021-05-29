@@ -34,12 +34,6 @@ class ShoppingViewModel(
 
     fun getAllShoppingItems() = repository.getAllShoppingItems()
 
-    fun getItemsFromCurrentList(currentListId: Int) =
-        repository.getItemsFromCurrentList(currentListId)
-
-
-    fun getCurrentList(currentListId: Int) = CoroutineScope(Dispatchers.Main).launch {
-        repository.getCurrentList(currentListId)
-    }
+    fun getItemsFromCurrentList(currentListId: Int) = repository.getItemsFromCurrentList(currentListId)
 
 }
