@@ -32,7 +32,7 @@
         android:name="com.krolikowski.shoppinglistapplication.ui.fragments.NewListFragment"
         android:label="NewListFragment" >
         <argument
-            android:name="list_id"
-            app:argType="integer" />
+            android:name="currentList"
+            app:argType="com.krolikowski.shoppinglistapplication.data.db.entities.ShoppingList" />
     </fragment>
 </navigation>

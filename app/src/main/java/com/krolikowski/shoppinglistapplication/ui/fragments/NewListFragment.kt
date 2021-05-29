@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.fragment_new_list.*
 class NewListFragment: Fragment(R.layout.fragment_new_list) {
 
     lateinit var viewModel: ShoppingViewModel
-    private val args: NewListFragmentArgs by navArgs()
+    private val args by navArgs<NewListFragmentArgs>()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,9 +39,7 @@ class NewListFragment: Fragment(R.layout.fragment_new_list) {
             wrapSelectorWheel = true
         }
 
-        val currentList = viewModel.getCurrentList(args.listId)
-
-        //list_name_TextView.text = currentList.name.toString()
+        list_name_TextView.text = args.currentList.name
 
         addItemButton.setOnClickListener {
             val name = itemNameEditText.text.toString()
