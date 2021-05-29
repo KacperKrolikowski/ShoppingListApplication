@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.krolikowski.shoppinglistapplication.R
 import com.krolikowski.shoppinglistapplication.data.db.entities.ShoppingList
 import com.krolikowski.shoppinglistapplication.ui.fragments.ActiveShoppingListsFragmentDirections
+import com.krolikowski.shoppinglistapplication.ui.fragments.NewListFragmentDirections
 import com.krolikowski.shoppinglistapplication.ui.viewmodels.ShoppingViewModel
+import kotlinx.android.synthetic.main.fragment_new_list.view.*
 import kotlinx.android.synthetic.main.shopping_single_item.view.*
 
 class ShoppingListsAdapter(

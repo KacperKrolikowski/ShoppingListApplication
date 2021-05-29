@@ -3,10 +3,13 @@ package com.krolikowski.shoppinglistapplication.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.krolikowski.shoppinglistapplication.R
 import com.krolikowski.shoppinglistapplication.data.db.entities.ShoppingItem
+import com.krolikowski.shoppinglistapplication.ui.fragments.NewListFragmentDirections
 import com.krolikowski.shoppinglistapplication.ui.viewmodels.ShoppingViewModel
+import kotlinx.android.synthetic.main.fragment_new_list.view.*
 import kotlinx.android.synthetic.main.shopping_list_item.view.*
 
 class ShoppingItemsAdapter(
@@ -57,8 +60,6 @@ private var viewModel: ShoppingViewModel
                 viewModel.upsertItem(currentShoppingItem)
             }
         }
-
-
     }
 
     override fun getItemCount(): Int {

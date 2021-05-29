@@ -10,11 +10,6 @@
         android:name="com.krolikowski.shoppinglistapplication.ui.fragments.ActiveShoppingListsFragment"
         android:label="activeShoppingListsFragment" >
         <action
-            android:id="@+id/action_activeShoppingListsFragment_to_selectedListFragment"
-            app:destination="@id/selectedListFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"/>
-        <action
             android:id="@+id/action_activeShoppingListsFragment_to_newListFragment"
             app:destination="@id/newListFragment"
             app:enterAnim="@anim/slide_in_right"
@@ -24,11 +19,13 @@
     <fragment
         android:id="@+id/archivedShoppingListsFragment"
         android:name="com.krolikowski.shoppinglistapplication.ui.fragments.ArchivedShoppingListsFragment"
-        android:label="archivedShoppingListsFragment" />
-    <fragment
-        android:id="@+id/selectedListFragment"
-        android:name="com.krolikowski.shoppinglistapplication.ui.fragments.SelectedListFragment"
-        android:label="selectedListFragment"/>
+        android:label="archivedShoppingListsFragment" >
+        <action
+            android:id="@+id/action_archivedShoppingListsFragment_to_newListFragment"
+            app:destination="@id/newListFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+    </fragment>
     <fragment
         android:id="@+id/newListFragment"
         android:name="com.krolikowski.shoppinglistapplication.ui.fragments.NewListFragment"
@@ -36,5 +33,10 @@
         <argument
             android:name="currentList"
             app:argType="com.krolikowski.shoppinglistapplication.data.db.entities.ShoppingList" />
+        <action
+            android:id="@+id/action_newListFragment_to_activeShoppingListsFragment"
+            app:destination="@id/activeShoppingListsFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"/>
     </fragment>
 </navigation>

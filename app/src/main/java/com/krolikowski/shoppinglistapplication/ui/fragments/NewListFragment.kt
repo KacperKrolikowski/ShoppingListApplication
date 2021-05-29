@@ -2,17 +2,15 @@ package com.krolikowski.shoppinglistapplication.ui.fragments
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
-import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.krolikowski.shoppinglistapplication.R
 import com.krolikowski.shoppinglistapplication.adapters.ShoppingItemsAdapter
 import com.krolikowski.shoppinglistapplication.data.db.ShoppingDatabase
 import com.krolikowski.shoppinglistapplication.data.db.entities.ShoppingItem
-import com.krolikowski.shoppinglistapplication.data.db.entities.ShoppingList
 import com.krolikowski.shoppinglistapplication.data.repositories.ShoppingRepository
 import com.krolikowski.shoppinglistapplication.ui.viewmodels.ShoppingViewModel
 import com.krolikowski.shoppinglistapplication.ui.viewmodels.ShoppingViewModelFactory
@@ -60,6 +58,16 @@ class NewListFragment: Fragment(R.layout.fragment_new_list) {
             adapter.notifyDataSetChanged()
         })
 
+        archiveButton.setOnClickListener {
+            val action = NewListFragmentDirections.actionNewListFragmentToActiveShoppingListsFragment()
+            findNavController().navigate(action)
+        }
+
+        deleteListButton.setOnClickListener {
+            val action = NewListFragmentDirections.actionNewListFragmentToActiveShoppingListsFragment()
+            findNavController().navigate(action)
+            viewModel.delete(args.currentList)
+        }
 
     }
 
