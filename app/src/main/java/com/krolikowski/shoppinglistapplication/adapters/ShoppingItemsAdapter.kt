@@ -31,6 +31,9 @@ private var viewModel: ShoppingViewModel
         holder.itemView.itemName.text = currentShoppingItem.name
         holder.itemView.itemAmount.text = currentShoppingItem.amount.toString()
 
+        holder.itemView.isBoughtCheckBox.isChecked = currentShoppingItem.state != 0
+
+
         holder.itemView.plusButton.setOnClickListener {
             currentShoppingItem.amount++
             viewModel.upsertItem(currentShoppingItem)

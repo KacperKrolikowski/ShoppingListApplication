@@ -44,7 +44,8 @@ class NewListFragment: Fragment(R.layout.fragment_new_list) {
         addItemButton.setOnClickListener {
             val name = itemNameEditText.text.toString()
             val amount = amountPicker.value
-            val NewItem = ShoppingItem(0, name, amount, 0)
+            val currentListId = args.currentList.id
+            val NewItem = ShoppingItem(currentListId!!, name, amount, 0)
             viewModel.upsertItem(NewItem)
             itemNameEditText.setText("")
 
@@ -54,7 +55,7 @@ class NewListFragment: Fragment(R.layout.fragment_new_list) {
         itemsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         itemsRecyclerView.adapter = adapter
 
-        viewModel.getAllShoppingItems().observe(viewLifecycleOwner, {
+        viewModel.getItemsFromCurrentList(args.currentList.id!!).observe(viewLifecycleOwner, {
             adapter.items = it
             adapter.notifyDataSetChanged()
         })
