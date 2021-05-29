@@ -18,7 +18,7 @@ private var viewModel: ShoppingViewModel
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShoppingItemsViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(
-            R.layout.shopping_single_item,
+            R.layout.shopping_list_item,
             parent,
             false)
         return ShoppingItemsViewHolder(view)

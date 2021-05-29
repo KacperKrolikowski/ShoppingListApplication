@@ -38,15 +38,14 @@ class NewListFragment: Fragment(R.layout.fragment_new_list) {
         val NewList = ShoppingList("New",0)
         viewModel.upsert(NewList)
 
-        list_name_editText.doOnTextChanged { text, start, before, count ->
-            NewList.name = text.toString()
-            viewModel.upsert(NewList)
-        }
+        list_name_TextView.text = ""
 
         addItemButton.setOnClickListener {
             val name = itemNameEditText.text.toString()
             val amount = amountPicker.value
             val NewItem = ShoppingItem(0, name, amount, 0)
+            viewModel.upsertItem(NewItem)
+            itemNameEditText.setText("")
 
         }
 

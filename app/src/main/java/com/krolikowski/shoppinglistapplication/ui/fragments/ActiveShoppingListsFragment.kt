@@ -12,6 +12,8 @@ import com.krolikowski.shoppinglistapplication.adapters.ShoppingListsAdapter
 import com.krolikowski.shoppinglistapplication.data.db.ShoppingDatabase
 import com.krolikowski.shoppinglistapplication.data.db.entities.ShoppingList
 import com.krolikowski.shoppinglistapplication.data.repositories.ShoppingRepository
+import com.krolikowski.shoppinglistapplication.ui.others.AddDialogListener
+import com.krolikowski.shoppinglistapplication.ui.others.AddNewShoppingListDialog
 import com.krolikowski.shoppinglistapplication.ui.viewmodels.ShoppingViewModel
 import com.krolikowski.shoppinglistapplication.ui.viewmodels.ShoppingViewModelFactory
 import kotlinx.android.synthetic.main.fragment_active_shopping_lists.*
@@ -40,8 +42,13 @@ class ActiveShoppingListsFragment: Fragment(R.layout.fragment_active_shopping_li
         })
 
         fabAddNewShoppingList.setOnClickListener {
-            val action = ActiveShoppingListsFragmentDirections.actionActiveShoppingListsFragmentToNewListFragment()
-            findNavController().navigate(action)
+            AddNewShoppingListDialog(requireContext(),
+            object : AddDialogListener{
+                override fun onAddButtonClicked(list: ShoppingList) {
+                    viewModel.upsert(list)
+                }
+            }).show()
+
         }
 
     }

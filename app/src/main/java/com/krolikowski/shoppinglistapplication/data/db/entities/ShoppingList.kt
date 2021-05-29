@@ -7,9 +7,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "shopping_lists")
 data class ShoppingList(
-    @ColumnInfo(name = "list_name")
+    @ColumnInfo(name = "list_name", defaultValue = "New list")
     var name: String,
-    @ColumnInfo(name = "list_archive")
+    @ColumnInfo(name = "list_archive", defaultValue = "0")
     var archive: Int
 ){
     @PrimaryKey(autoGenerate = true)

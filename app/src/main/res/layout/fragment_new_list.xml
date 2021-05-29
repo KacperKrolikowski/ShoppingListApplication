@@ -5,15 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/list_name_editText"
+    <TextView
+        android:id="@+id/list_name_TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="Name of you list..."
-        android:inputType="textPersonName"
+        android:text=""
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -21,12 +21,12 @@
         android:id="@+id/itemsRecyclerView"
         android:layout_width="409dp"
         android:layout_height="0dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/itemNameEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_name_editText" />
+        app:layout_constraintTop_toBottomOf="@+id/list_name_TextView" />
 
     <EditText
         android:id="@+id/itemNameEditText"
@@ -35,20 +35,21 @@
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
         android:ems="10"
+        android:hint="Name of you product..."
         android:inputType="textPersonName"
-        android:text="Name"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <NumberPicker
         android:id="@+id/amountPicker"
-        android:layout_width="75dp"
-        android:layout_height="130dp"
+        android:layout_width="54dp"
+        android:layout_height="101dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/addItemButton"
         app:layout_constraintStart_toEndOf="@+id/itemNameEditText"
         app:layout_constraintTop_toBottomOf="@+id/itemsRecyclerView"
-        app:layout_constraintVertical_bias="0.722" />
+        app:layout_constraintVertical_bias="0.482" />
 
     <ImageButton
         android:id="@+id/addItemButton"
@@ -62,8 +63,8 @@
 
     <ImageButton
         android:id="@+id/acceptListButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
