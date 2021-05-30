@@ -9,4 +9,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="colorAccent">#FFE600</color>
     <color name="errorColor">#D50000</color>
+    <color name="likeRed">#e63946</color>
+    <color name="likeWhite">#f1faee</color>
+    <color name="likeLightBlue">#a8dadc</color>
+    <color name="likeBlue">#457b9d</color>
+    <color name="likeDarkBlue">#1d3557</color>
 </resources>
