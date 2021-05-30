@@ -2,6 +2,9 @@ package com.krolikowski.shoppinglistapplication.ui.fragments
 
 import android.os.Bundle
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
@@ -41,6 +44,10 @@ class NewListFragment: Fragment(R.layout.fragment_new_list) {
 
         addItemButton.setOnClickListener {
             val name = itemNameEditText.text.toString()
+            if (name.isEmpty()){
+                Toast.makeText(context, "Enter item name", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             val amount = amountPicker.value
             val currentListId = args.currentList.id
             val newItem = ShoppingItem(currentListId!!, name, amount, 0)
@@ -50,12 +57,17 @@ class NewListFragment: Fragment(R.layout.fragment_new_list) {
         }
 
         if (args.currentList.archive == 0){
-            unarchiveButton.visibility = View.GONE
+            unarchiveButton.visibility = GONE
+            unarchiveTextView.visibility = GONE
         } else{
-            archiveButton.visibility = View.GONE
+            archiveButton.visibility = GONE
+            addItemButton.visibility = GONE
+            amountPicker.visibility = GONE
+            itemNameEditText.visibility = GONE
+            unarchiveTextView.visibility = VISIBLE
         }
 
-        val adapter = ShoppingItemsAdapter(listOf(), viewModel)
+        val adapter = ShoppingItemsAdapter(listOf(), viewModel, args.currentList.archive)
         itemsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         itemsRecyclerView.adapter = adapter
 

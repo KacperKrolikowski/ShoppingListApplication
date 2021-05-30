@@ -36,7 +36,7 @@ class ActiveShoppingListsFragment: Fragment(R.layout.fragment_active_shopping_li
         shoppingListsRecycleView.layoutManager = LinearLayoutManager(requireContext())
         shoppingListsRecycleView.adapter = adapter
 
-        viewModel.getActiveShoppingLists().observe(viewLifecycleOwner, Observer {
+        viewModel.getActiveShoppingLists().observe(viewLifecycleOwner, {
             adapter.lists = it
             adapter.notifyDataSetChanged()
         })
