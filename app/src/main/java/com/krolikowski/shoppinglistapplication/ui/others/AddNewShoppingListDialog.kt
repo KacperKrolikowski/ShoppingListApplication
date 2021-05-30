@@ -2,6 +2,7 @@ package com.krolikowski.shoppinglistapplication.ui.others
 
 import android.content.Context
 import android.os.Bundle
+import android.view.Window
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDialog
 import com.krolikowski.shoppinglistapplication.R
@@ -13,7 +14,7 @@ class AddNewShoppingListDialog(context: Context, var addDialogListener: AddDialo
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dialog_add_new_list)
-
+        setTitle("Add new list")
         tvAdd.setOnClickListener {
             val name = listNameEditText.text.toString()
 

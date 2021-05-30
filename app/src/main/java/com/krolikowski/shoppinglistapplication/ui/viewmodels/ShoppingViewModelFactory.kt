@@ -1,6 +1,5 @@
 package com.krolikowski.shoppinglistapplication.ui.viewmodels
 
-import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.krolikowski.shoppinglistapplication.data.repositories.ShoppingRepository

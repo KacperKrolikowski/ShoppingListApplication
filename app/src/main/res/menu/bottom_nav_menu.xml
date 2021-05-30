@@ -4,10 +4,10 @@
     <item
         android:id="@+id/activeShoppingListsFragment"
         android:title="Your lists"
-        android:icon="@drawable/ic_launcher_background"/>
+        android:icon="@drawable/ic_shopping_cart"/>
     <item
         android:id="@+id/archivedShoppingListsFragment"
         android:title="Your archived lists"
-        android:icon="@drawable/ic_launcher_background"/>
+        android:icon="@drawable/ic_archive"/>
 
 </menu>
