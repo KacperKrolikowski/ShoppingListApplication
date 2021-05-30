@@ -49,6 +49,12 @@ class NewListFragment: Fragment(R.layout.fragment_new_list) {
 
         }
 
+        if (args.currentList.archive == 0){
+            unarchiveButton.visibility = View.GONE
+        } else{
+            archiveButton.visibility = View.GONE
+        }
+
         val adapter = ShoppingItemsAdapter(listOf(), viewModel)
         itemsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         itemsRecyclerView.adapter = adapter
@@ -61,6 +67,15 @@ class NewListFragment: Fragment(R.layout.fragment_new_list) {
         archiveButton.setOnClickListener {
             val action = NewListFragmentDirections.actionNewListFragmentToActiveShoppingListsFragment()
             findNavController().navigate(action)
+            args.currentList.archive = 1
+            viewModel.upsert(args.currentList)
+        }
+
+        unarchiveButton.setOnClickListener {
+            val action = NewListFragmentDirections.actionNewListFragmentToActiveShoppingListsFragment()
+            findNavController().navigate(action)
+            args.currentList.archive = 0
+            viewModel.upsert(args.currentList)
         }
 
         deleteListButton.setOnClickListener {

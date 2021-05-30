@@ -4,14 +4,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.krolikowski.shoppinglistapplication.R
 import com.krolikowski.shoppinglistapplication.data.db.entities.ShoppingList
 import com.krolikowski.shoppinglistapplication.ui.fragments.ActiveShoppingListsFragmentDirections
-import com.krolikowski.shoppinglistapplication.ui.fragments.NewListFragmentDirections
+import com.krolikowski.shoppinglistapplication.ui.fragments.ArchivedShoppingListsFragmentDirections
 import com.krolikowski.shoppinglistapplication.ui.viewmodels.ShoppingViewModel
-import kotlinx.android.synthetic.main.fragment_new_list.view.*
 import kotlinx.android.synthetic.main.shopping_single_item.view.*
 
 class ShoppingListsAdapter(
@@ -35,7 +33,11 @@ class ShoppingListsAdapter(
         holder.itemView.shoppingListName.text = currentShoppingList.name
 
         holder.itemView.arrowButton.setOnClickListener {
-            val action = ActiveShoppingListsFragmentDirections.actionActiveShoppingListsFragmentToNewListFragment(currentShoppingList)
+           val action = if (currentShoppingList.archive == 0) {
+                ActiveShoppingListsFragmentDirections.actionActiveShoppingListsFragmentToNewListFragment(currentShoppingList)
+            } else {
+                ArchivedShoppingListsFragmentDirections.actionArchivedShoppingListsFragmentToNewListFragment(currentShoppingList)
+            }
             holder.itemView.findNavController().navigate(action)
         }
 
