@@ -58,13 +58,11 @@ class NewListFragment: Fragment(R.layout.fragment_new_list) {
 
         if (args.currentList.archive == 0){
             unarchiveButton.visibility = GONE
-            unarchiveTextView.visibility = GONE
         } else{
             archiveButton.visibility = GONE
             addItemButton.visibility = GONE
             amountPicker.visibility = GONE
             itemNameEditText.visibility = GONE
-            unarchiveTextView.visibility = VISIBLE
         }
 
         val adapter = ShoppingItemsAdapter(listOf(), viewModel, args.currentList.archive)

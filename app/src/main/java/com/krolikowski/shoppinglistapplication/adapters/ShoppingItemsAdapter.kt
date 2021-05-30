@@ -1,9 +1,9 @@
 package com.krolikowski.shoppinglistapplication.adapters
 
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.GONE
-import android.view.View.INVISIBLE
+import android.view.View.*
 import android.view.ViewGroup
 import androidx.lifecycle.LiveData
 import androidx.navigation.findNavController
@@ -44,9 +44,6 @@ var isArchive: Int
         holder.itemView.itemName.text = currentShoppingItem.name
         holder.itemView.itemAmount.text = currentShoppingItem.amount.toString()
 
-        holder.itemView.isBoughtCheckBox.isChecked = currentShoppingItem.state != 0
-
-
         holder.itemView.plusButton.setOnClickListener {
             currentShoppingItem.amount++
             viewModel.upsertItem(currentShoppingItem)
@@ -61,12 +58,26 @@ var isArchive: Int
             }
         }
 
+        if (currentShoppingItem.state != 0){
+            holder.itemView.isBoughtCheckBox.isChecked = true
+            holder.itemView.itemName.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+            holder.itemView.plusButton.visibility = INVISIBLE
+            holder.itemView.minusButton.visibility = INVISIBLE
+            holder.itemView.lineTextView.visibility = VISIBLE
+        }
+
         holder.itemView.isBoughtCheckBox.setOnClickListener {
             if (currentShoppingItem.state == 0){
                 currentShoppingItem.state = 1
+                holder.itemView.plusButton.visibility = INVISIBLE
+                holder.itemView.minusButton.visibility = INVISIBLE
+                holder.itemView.lineTextView.visibility = VISIBLE
                 viewModel.upsertItem(currentShoppingItem)
             } else{
                 currentShoppingItem.state = 0
+                holder.itemView.plusButton.visibility = VISIBLE
+                holder.itemView.minusButton.visibility = VISIBLE
+                holder.itemView.lineTextView.visibility = INVISIBLE
                 viewModel.upsertItem(currentShoppingItem)
             }
         }

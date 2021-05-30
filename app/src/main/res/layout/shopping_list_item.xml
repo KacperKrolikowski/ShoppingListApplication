@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
     <TextView
@@ -10,7 +10,7 @@
         android:layout_width="191dp"
         android:layout_height="23dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="24dp"
         android:text="Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -57,6 +57,18 @@
         app:layout_constraintEnd_toStartOf="@+id/plusButton"
         app:layout_constraintStart_toEndOf="@+id/minusButton"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:visibility="invisible"
+        android:id="@+id/lineTextView"
+        android:layout_width="309dp"
+        android:layout_height="23dp"
+        android:background="@drawable/shape_cross_line"
+        app:layout_constraintBottom_toBottomOf="@+id/itemName"
+        app:layout_constraintEnd_toEndOf="@+id/plusButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/itemName"
+        app:layout_constraintTop_toTopOf="@+id/itemName" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
