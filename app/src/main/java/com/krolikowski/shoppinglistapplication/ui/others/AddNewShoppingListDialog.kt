@@ -14,7 +14,7 @@ class AddNewShoppingListDialog(context: Context, var addDialogListener: AddDialo
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dialog_add_new_list)
-        setTitle("Add new list")
+
         tvAdd.setOnClickListener {
             val name = listNameEditText.text.toString()
 

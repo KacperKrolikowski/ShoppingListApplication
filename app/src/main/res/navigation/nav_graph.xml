@@ -13,7 +13,7 @@
             android:id="@+id/action_activeShoppingListsFragment_to_newListFragment"
             app:destination="@id/newListFragment"
             app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"/>
+            app:exitAnim="@anim/slide_out_left" />
 
     </fragment>
     <fragment
@@ -37,6 +37,8 @@
             android:id="@+id/action_newListFragment_to_activeShoppingListsFragment"
             app:destination="@id/activeShoppingListsFragment"
             app:enterAnim="@anim/slide_in_left"
-            app:exitAnim="@anim/slide_out_right"/>
+            app:exitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/newListFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 </navigation>

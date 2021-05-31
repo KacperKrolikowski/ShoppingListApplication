@@ -1,19 +1,13 @@
 package com.krolikowski.shoppinglistapplication.adapters
 
-import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.*
 import android.view.ViewGroup
-import androidx.lifecycle.LiveData
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.krolikowski.shoppinglistapplication.R
 import com.krolikowski.shoppinglistapplication.data.db.entities.ShoppingItem
-import com.krolikowski.shoppinglistapplication.data.db.entities.ShoppingList
-import com.krolikowski.shoppinglistapplication.ui.fragments.NewListFragmentDirections
 import com.krolikowski.shoppinglistapplication.ui.viewmodels.ShoppingViewModel
-import kotlinx.android.synthetic.main.fragment_new_list.view.*
 import kotlinx.android.synthetic.main.shopping_list_item.view.*
 
 class ShoppingItemsAdapter(
@@ -60,7 +54,6 @@ var isArchive: Int
 
         if (currentShoppingItem.state != 0){
             holder.itemView.isBoughtCheckBox.isChecked = true
-            holder.itemView.itemName.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
             holder.itemView.plusButton.visibility = INVISIBLE
             holder.itemView.minusButton.visibility = INVISIBLE
             holder.itemView.lineTextView.visibility = VISIBLE
