@@ -3,10 +3,10 @@ package com.krolikowski.shoppinglistapplication.ui.fragments
 import android.os.Bundle
 import android.view.View
 import android.view.View.GONE
-import android.view.View.VISIBLE
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,23 +16,18 @@ import com.krolikowski.shoppinglistapplication.data.db.ShoppingDatabase
 import com.krolikowski.shoppinglistapplication.data.db.entities.ShoppingItem
 import com.krolikowski.shoppinglistapplication.data.repositories.ShoppingRepository
 import com.krolikowski.shoppinglistapplication.ui.viewmodels.ShoppingViewModel
-import com.krolikowski.shoppinglistapplication.ui.viewmodels.ShoppingViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_new_list.*
 
+@AndroidEntryPoint
 class NewListFragment: Fragment(R.layout.fragment_new_list) {
 
-    lateinit var viewModel: ShoppingViewModel
+    private val viewModel: ShoppingViewModel by viewModels()
     private val args by navArgs<NewListFragmentArgs>()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val database = ShoppingDatabase(requireContext())
-        val repository = ShoppingRepository(database)
-        val factory = ShoppingViewModelFactory(repository)
-
-        val viewModel = ViewModelProviders.of(this, factory).get(ShoppingViewModel::class.java)
 
         amountPicker.apply {
             minValue = 1
@@ -69,7 +64,7 @@ class NewListFragment: Fragment(R.layout.fragment_new_list) {
         itemsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         itemsRecyclerView.adapter = adapter
 
-        viewModel.getItemsFromCurrentList(args.currentList.id!!).observe(viewLifecycleOwner, {
+        viewModel.getItemsFromCurrentList(args.currentList.id!!).observe(viewLifecycleOwner, Observer{
             adapter.items = it
             adapter.notifyDataSetChanged()
         })

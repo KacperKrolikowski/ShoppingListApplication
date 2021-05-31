@@ -1,5 +1,6 @@
 package com.krolikowski.shoppinglistapplication.ui.viewmodels
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import com.krolikowski.shoppinglistapplication.data.db.entities.ShoppingItem
 import com.krolikowski.shoppinglistapplication.data.db.entities.ShoppingList
@@ -8,7 +9,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class ShoppingViewModel(
+class ShoppingViewModel @ViewModelInject constructor (
     private var repository: ShoppingRepository
 ): ViewModel() {
 
