@@ -5,6 +5,11 @@
         android:id="@+id/activeShoppingListsFragment"
         android:title="Your lists"
         android:icon="@drawable/ic_shopping_cart"/>
+
+    <item
+        android:id="@+id/placeholder"
+        android:title=""/>
+
     <item
         android:id="@+id/archivedShoppingListsFragment"
         android:title="Your archived lists"

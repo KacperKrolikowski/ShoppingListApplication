@@ -3,6 +3,7 @@ package com.krolikowski.shoppinglistapplication.ui.fragments
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,7 +21,7 @@ import kotlinx.android.synthetic.main.fragment_active_shopping_lists.*
 @AndroidEntryPoint
 class ActiveShoppingListsFragment: Fragment(R.layout.fragment_active_shopping_lists) {
 
-    private val viewModel: ShoppingViewModel by viewModels()
+    private val viewModel: ShoppingViewModel by activityViewModels()
     lateinit var listsAdapter: ShoppingListsAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -34,16 +35,6 @@ class ActiveShoppingListsFragment: Fragment(R.layout.fragment_active_shopping_li
             adapter.lists = it
             adapter.notifyDataSetChanged()
         })
-
-        fabAddNewShoppingList.setOnClickListener {
-            AddNewShoppingListDialog(requireContext(),
-            object : AddDialogListener{
-                override fun onAddButtonClicked(list: ShoppingList) {
-                    viewModel.upsert(list)
-                }
-            }).show()
-
-        }
 
     }
 }

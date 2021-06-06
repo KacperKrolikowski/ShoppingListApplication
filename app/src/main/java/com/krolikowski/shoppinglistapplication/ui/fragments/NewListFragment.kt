@@ -5,6 +5,7 @@ import android.view.View
 import android.view.View.GONE
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -22,7 +23,7 @@ import kotlinx.android.synthetic.main.fragment_new_list.*
 @AndroidEntryPoint
 class NewListFragment: Fragment(R.layout.fragment_new_list) {
 
-    private val viewModel: ShoppingViewModel by viewModels()
+    private val viewModel: ShoppingViewModel by activityViewModels()
     private val args by navArgs<NewListFragmentArgs>()
 
 
