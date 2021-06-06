@@ -34,7 +34,7 @@
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/isBoughtCheckBox"
         app:layout_constraintTop_toTopOf="parent"
@@ -45,7 +45,7 @@
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/itemName"
         app:layout_constraintTop_toTopOf="parent"
@@ -53,7 +53,7 @@
 
     <TextView
         android:id="@+id/itemAmount"
-        android:layout_width="12dp"
+        android:layout_width="30dp"
         android:layout_height="23dp"
         android:text="0"
         android:textAlignment="center"

@@ -14,6 +14,7 @@ import com.krolikowski.shoppinglistapplication.data.db.entities.ShoppingList
 import com.krolikowski.shoppinglistapplication.data.repositories.ShoppingRepository
 import com.krolikowski.shoppinglistapplication.ui.others.AddDialogListener
 import com.krolikowski.shoppinglistapplication.ui.others.AddNewShoppingListDialog
+import com.krolikowski.shoppinglistapplication.ui.viewmodels.ListsViewModel
 import com.krolikowski.shoppinglistapplication.ui.viewmodels.ShoppingViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_active_shopping_lists.*
@@ -21,17 +22,17 @@ import kotlinx.android.synthetic.main.fragment_active_shopping_lists.*
 @AndroidEntryPoint
 class ActiveShoppingListsFragment: Fragment(R.layout.fragment_active_shopping_lists) {
 
-    private val viewModel: ShoppingViewModel by activityViewModels()
+    private val listsViewModel: ListsViewModel by activityViewModels()
     lateinit var listsAdapter: ShoppingListsAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = ShoppingListsAdapter(listOf(), viewModel)
+        val adapter = ShoppingListsAdapter(listOf(), listsViewModel)
         shoppingListsRecycleView.layoutManager = LinearLayoutManager(requireContext())
         shoppingListsRecycleView.adapter = adapter
 
-        viewModel.getActiveShoppingLists().observe(viewLifecycleOwner, Observer{
+        listsViewModel.getActiveShoppingLists().observe(viewLifecycleOwner, Observer{
             adapter.lists = it
             adapter.notifyDataSetChanged()
         })

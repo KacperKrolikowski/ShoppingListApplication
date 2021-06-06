@@ -11,6 +11,7 @@ import com.krolikowski.shoppinglistapplication.R
 import com.krolikowski.shoppinglistapplication.adapters.ShoppingListsAdapter
 import com.krolikowski.shoppinglistapplication.data.db.ShoppingDatabase
 import com.krolikowski.shoppinglistapplication.data.repositories.ShoppingRepository
+import com.krolikowski.shoppinglistapplication.ui.viewmodels.ListsViewModel
 import com.krolikowski.shoppinglistapplication.ui.viewmodels.ShoppingViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_shopping.*
@@ -19,18 +20,18 @@ import kotlinx.android.synthetic.main.fragment_archived_shopping_lists.*
 @AndroidEntryPoint
 class ArchivedShoppingListsFragment : Fragment(R.layout.fragment_archived_shopping_lists){
 
-    private val viewModel: ShoppingViewModel by activityViewModels()
+    private val listsViewModel: ListsViewModel by activityViewModels()
 
     lateinit var listsAdapter: ShoppingListsAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = ShoppingListsAdapter(listOf(), viewModel)
+        val adapter = ShoppingListsAdapter(listOf(), listsViewModel)
         shoppingArchivedListsRecycleView.layoutManager = LinearLayoutManager(requireContext())
         shoppingArchivedListsRecycleView.adapter = adapter
 
-        viewModel.getArchiveShoppingLists().observe(viewLifecycleOwner, Observer{
+        listsViewModel.getArchiveShoppingLists().observe(viewLifecycleOwner, Observer{
             adapter.lists = it
             adapter.notifyDataSetChanged()
         })

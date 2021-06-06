@@ -6,18 +6,16 @@ import android.view.View.GONE
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.krolikowski.shoppinglistapplication.R
 import com.krolikowski.shoppinglistapplication.adapters.ShoppingItemsAdapter
-import com.krolikowski.shoppinglistapplication.data.db.ShoppingDatabase
 import com.krolikowski.shoppinglistapplication.data.db.entities.ShoppingItem
-import com.krolikowski.shoppinglistapplication.data.repositories.ShoppingRepository
 import com.krolikowski.shoppinglistapplication.ui.viewmodels.ShoppingViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_shopping.*
 import kotlinx.android.synthetic.main.fragment_new_list.*
 
 @AndroidEntryPoint
@@ -26,15 +24,8 @@ class NewListFragment: Fragment(R.layout.fragment_new_list) {
     private val viewModel: ShoppingViewModel by activityViewModels()
     private val args by navArgs<NewListFragmentArgs>()
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        amountPicker.apply {
-            minValue = 1
-            maxValue = 100
-            wrapSelectorWheel = true
-        }
 
         list_name_TextView.text = args.currentList.name
 
@@ -44,9 +35,16 @@ class NewListFragment: Fragment(R.layout.fragment_new_list) {
                 Toast.makeText(context, "Enter item name", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            val amount = amountPicker.value
+            val amount = amountEditText.text.toString()
+            var amountInt = 0
+            if (amount.isEmpty()){
+                Toast.makeText(context, "Enter item amount", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            } else{
+                amountInt = amount.toInt()
+            }
             val currentListId = args.currentList.id
-            val newItem = ShoppingItem(currentListId!!, name, amount, 0)
+            val newItem = ShoppingItem(currentListId!!, name, amountInt, 0)
             viewModel.upsertItem(newItem)
             itemNameEditText.setText("")
 
@@ -57,7 +55,7 @@ class NewListFragment: Fragment(R.layout.fragment_new_list) {
         } else{
             archiveButton.visibility = GONE
             addItemButton.visibility = GONE
-            amountPicker.visibility = GONE
+            amountEditText.visibility = GONE
             itemNameEditText.visibility = GONE
         }
 
@@ -91,5 +89,4 @@ class NewListFragment: Fragment(R.layout.fragment_new_list) {
         }
 
     }
-
 }

@@ -2,7 +2,6 @@ package com.krolikowski.shoppinglistapplication.ui.others
 
 import android.content.Context
 import android.os.Bundle
-import android.view.Window
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDialog
 import com.krolikowski.shoppinglistapplication.R

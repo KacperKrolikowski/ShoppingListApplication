@@ -9,12 +9,13 @@ import com.krolikowski.shoppinglistapplication.R
 import com.krolikowski.shoppinglistapplication.data.db.entities.ShoppingList
 import com.krolikowski.shoppinglistapplication.ui.fragments.ActiveShoppingListsFragmentDirections
 import com.krolikowski.shoppinglistapplication.ui.fragments.ArchivedShoppingListsFragmentDirections
+import com.krolikowski.shoppinglistapplication.ui.viewmodels.ListsViewModel
 import com.krolikowski.shoppinglistapplication.ui.viewmodels.ShoppingViewModel
 import kotlinx.android.synthetic.main.shopping_single_item.view.*
 
 class ShoppingListsAdapter(
     var lists: List<ShoppingList>,
-    private val viewModel: ShoppingViewModel
+    private val viewModel: ListsViewModel
 ) : RecyclerView.Adapter<ShoppingListsAdapter.ShoppingListsViewHolder>() {
 
     inner class ShoppingListsViewHolder (itemView: View): RecyclerView.ViewHolder(itemView)

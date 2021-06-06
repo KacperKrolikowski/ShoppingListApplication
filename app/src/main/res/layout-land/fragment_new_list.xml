@@ -44,16 +44,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <NumberPicker
-        android:id="@+id/amountPicker"
-        android:layout_width="54dp"
-        android:layout_height="101dp"
+    <EditText
+        android:id="@+id/amountEditText"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Amount"
+        android:inputType="number"
+        android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/addItemButton"
-        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintHorizontal_bias="0.82"
         app:layout_constraintStart_toEndOf="@+id/itemNameEditText"
-        app:layout_constraintTop_toBottomOf="@+id/itemsRecyclerView"
-        app:layout_constraintVertical_bias="0.482" />
+        app:layout_constraintTop_toBottomOf="@+id/itemsRecyclerView" />
 
     <ImageButton
         android:id="@+id/addItemButton"
